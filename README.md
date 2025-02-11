@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# CatchMate AdminPage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 CatchMate의 관리자 페이지입니다.
 
-## Available Scripts
+## 프로젝트 환경 설정
 
-In the project directory, you can run:
+프로젝트를 클론한 후 환경을 설정하는 방법을 정리
 
-### `yarn start`
+1. 레포지토리 클론
+2. node.js 설치
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   📌 이 프로젝트는 NVM(Node Version Manager)을 사용하여 Node.js 버전을 맞춥니다.<br>
+   📌 팀원들은 반드시 nvm을 설치한 후 nvm use 명령어를 실행하세요.<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ✅ 1️. NVM이 설치되어 있는지 확인
 
-### `yarn test`
+   ```sh
+   nvm -v
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   📌 버전(0.39.x 등)이 출력되면 정상! <br>
+   📌 만약 "nvm: command not found" 오류가 뜬다면, NVM 공식 문서에서 설치하세요. <br>
 
-### `yarn build`
+   ✅ 2️. 프로젝트에 맞는 Node.js 버전 사용
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```sh
+   nvm use
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   📌 .nvmrc 파일에 지정된 버전(Node.js 22)이 자동으로 적용됩니다.<br>
+   📌 만약 Node.js가 설치되지 않았다면, 아래 명령어를 실행하세요:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```sh
+   nvm install 22
+   nvm use 22
+   ```
 
-### `yarn eject`
+   ✅ 3️. Node.js 및 npm 버전 확인
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```sh
+   node -v
+   npm -v
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   📌 Node 버전이 v22.x.x 형태로 출력되면 정상!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Yarn 버전 통일 (Yarn 4.6.0 사용) 및 패키지 설치
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   📌 이 프로젝트는 Yarn 4.6.0을 사용합니다.<br>
+   📌 아래 방법으로 팀원들의 Yarn 버전을 통일해주세요.
 
-## Learn More
+   ✅ 1️. Corepack 활성화
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```sh
+   corepack enable
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ✅ 2️. 프로젝트에서 Yarn 버전 적용
 
-### Code Splitting
+   ```sh
+   yarn set version 4.6.0
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ✅ 3️. Yarn 버전 확인
 
-### Analyzing the Bundle Size
+   ```sh
+   yarn -v
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   📌 4.6.0이 출력되면 정상!
 
-### Making a Progressive Web App
+   ✅ 4️. 모든 패키지 설치
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```sh
+   yarn install
+   ```
 
-### Advanced Configuration
+   📌 node_modules/ 폴더가 정상적으로 생성되어야 합니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. VSCode 설정 적용 (자동 포맷팅)
 
-### Deployment
+   ✅ 팀원들이 동일한 코드 스타일을 유지할 수 있도록 VSCode 설정 파일이 포함되어 있습니다.
+   ✅ 아래 설정을 VSCode에서 적용하면 저장할 때 자동으로 포맷팅됩니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   1. Ctrl + Shift + P (Cmd + Shift + P for Mac) → "Preferences: Open Settings (JSON)" 검색 후 클릭
 
-### `yarn build` fails to minify
+   2. 아래 내용을 추가:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```json
+   {
+     "editor.formatOnSave": true,
+     "editor.defaultFormatter": "esbenp.prettier-vscode",
+     "eslint.validate": ["javascript", "javascriptreact"],
+     "eslint.format.enable": true,
+     "editor.codeActionsOnSave": {
+       "source.fixAll": true,
+       "source.fixAll.eslint": true
+     }
+   }
+   ```
+
+   ✅ 또는 .vscode/settings.json 파일이 자동으로 적용됩니다.
+
+5. 프로젝트 실행
+   ```sh
+   yarn start
+   ```
+   📌 localhost:3000에서 앱이 정상적으로 실행되는지 확인하세요!
