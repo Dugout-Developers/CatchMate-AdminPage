@@ -3,6 +3,7 @@ import HomeStatCard from './HomeStatCard';
 import '../../styles/Home.css';
 import { mockData, styleMockData, teamMockData } from '../../data/homeMockData';
 import HomeStatListCard from './HomeStatListCard';
+
 function Home() {
   return (
     <div className="home">
