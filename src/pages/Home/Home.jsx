@@ -1,13 +1,9 @@
 import React from 'react';
 import HomeStatCard from './HomeStatCard';
 import '../../styles/Home.css';
+import { mockData, styleMockData, teamMockData } from '../../data/homeMockData';
+import HomeStatListCard from './HomeStatListCard';
 function Home() {
-  const mockData = {
-    title: '전체 유저수',
-    totalCount: 9999,
-    upCount: 60,
-  };
-
   return (
     <div className="home">
       {/* HomeStatCard에 데이터 전달 */}
@@ -17,16 +13,13 @@ function Home() {
         <HomeStatCard className="card" item={mockData} />
       </section>
       <section className="team-stat-container container">
-        <HomeStatCard className="card" item={mockData} />
-        <HomeStatCard className="card" item={mockData} />
-        <HomeStatCard className="card" item={mockData} />
-        <HomeStatCard className="card" item={mockData} />
-        <HomeStatCard className="card" item={mockData} />
+        <HomeStatListCard title="구단별 가입자 수" dataList={teamMockData} />
       </section>
       <section className="style-stat-container container">
-        <HomeStatCard className="card" item={mockData} />
-        <HomeStatCard className="card" item={mockData} />
-        <HomeStatCard className="card" item={mockData} />
+        <HomeStatListCard
+          title="응원스타일별 가입자 수"
+          dataList={styleMockData}
+        />
       </section>
       <section className="cs-stat-container container">
         <HomeStatCard className="card" item={mockData} />
