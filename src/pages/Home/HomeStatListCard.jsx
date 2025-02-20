@@ -1,30 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/HomeStatListCard.css';
-import UpArrow from '../../assets/upArrow.svg';
+import UpArrow from '../../assets/img/upArrow.svg';
+import {
+  Body01,
+  Body02,
+  Headline01,
+  Headline03,
+} from '../../styles/FontStyle/Typography';
 
 const HomeStatListCard = ({ title, dataList }) => {
   return (
     <div className="stat-list-card">
-      <div className="stat-list-header">
+      <Body02 fontWeight="semiBold" className="stat-list-header">
         <p className="title">{title}</p>
         <p className="sort-title">유저순 정렬</p>
-      </div>
+      </Body02>
 
       <ul className="stat-list">
         {dataList.map((item, index) => (
           <li key={index} className="stat-item">
-            <span className="item-name" style={{ color: item.color }}>
+            <Headline03
+              fontWeight="semiBold"
+              as="p"
+              className="item-name"
+              style={{ color: item.color }}
+            >
               {item.name}
-            </span>
+            </Headline03>
             <div className="item-stat">
               <div className="up-count">
                 <span>
                   <img src={UpArrow} alt="상승" className="up-icon" />
                 </span>
-                <span className="up-text">{item.upCount.toLocaleString()}</span>
+                <Body01 fontWeight="semiBold" as="span" className="up-text">
+                  {item.upCount.toLocaleString()}
+                </Body01>
               </div>
-              <p className="total-count">{item.totalCount.toLocaleString()}</p>
+              <Headline01 fontWeight="semiBold" as="p" className="total-count">
+                {item.totalCount.toLocaleString()}
+              </Headline01>
             </div>
           </li>
         ))}

@@ -12,8 +12,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
-  font-weight: 700;
   color: var(--gray600);
   margin-bottom: 4px;
 }
@@ -40,12 +38,6 @@
   border-bottom: none;
 }
 
-/* 이름 컬러 적용 */
-.item-name {
-  font-size: 20px;
-  font-weight: 500;
-}
-
 /* 통계 영역 (업 카운트 + 전체 카운트) */
 .item-stat {
   display: flex;
@@ -53,18 +45,14 @@
   justify-content: end;
 }
 
-/* 📌 증가한 수 (업 카운트) */
+/* 증가한 수 (업 카운트) */
 .up-count {
   display: inline;
   align-self: end;
-  font-size: 16px;
-  font-weight: 700;
   color: var(--primary);
 }
 
-/* 📌 총 가입자 수 */
+/* 총 가입자 수 */
 .total-count {
-  font-size: 28px;
-  font-weight: 700;
   color: var(--gray900);
 }

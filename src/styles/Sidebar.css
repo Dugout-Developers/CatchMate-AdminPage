@@ -36,8 +36,6 @@
   text-decoration: none;
   color: var(--gray100);
   padding: 15px 0;
-  font-size: 14px;
-  font-weight: bold;
   transition: background 0.3s;
 }
 .menu-icon {

@@ -1,21 +1,27 @@
 import React from 'react';
 import '../../styles/HomeStatCard.css';
 import PropTypes from 'prop-types';
-import UpArrow from '../../assets/upArrow.svg';
-
+import UpArrow from '../../assets/img/upArrow.svg';
+import { Body02, Body01, Headline01 } from '../../styles/FontStyle/Typography';
 const HomeStatCard = ({ item }) => {
   const { title, totalCount, upCount } = item;
   return (
     <div className="stat-card">
-      <p className="title">{title}</p>
+      <Body02 fontWeight="semiBold" as="p" className="title">
+        {title}
+      </Body02>
       <div className="stat-count">
         <div className="up-count">
           <span>
             <img src={UpArrow} alt="상승" className="up-icon" />
           </span>
-          <span className="up-text">{upCount}</span>
+          <Body01 fontWeight="semiBold" as="span" className="up-text">
+            {upCount}
+          </Body01>
         </div>
-        <p className="total-count">{totalCount.toLocaleString()}</p>
+        <Headline01 fontWeight="semiBold" as="p" className="total-count">
+          {totalCount.toLocaleString()}
+        </Headline01>
       </div>
     </div>
   );

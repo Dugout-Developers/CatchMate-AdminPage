@@ -12,8 +12,6 @@
 
 .title {
   color: var(--gray600);
-  font-weight: 700;
-  font-size: 14px;
 }
 
 .stat-count {

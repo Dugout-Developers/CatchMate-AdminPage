@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/Sidebar.css';
 
-import LogoIcon from '../assets/logo.svg';
-import UserIcon from '../assets/user.svg';
-import GrowthIcon from '../assets/growth.svg';
+import LogoIcon from '../assets/img/logo.svg';
+import UserIcon from '../assets/img/user.svg';
+import GrowthIcon from '../assets/img/growth.svg';
+import { Body02 } from '../styles/FontStyle/Typography';
 
 const Sidebar = () => {
   const location = useLocation();
@@ -30,7 +31,9 @@ const Sidebar = () => {
           >
             <Link to={item.path} className="sidebar-link">
               <img src={item.icon} alt="{item.name}" className="menu-icon" />
-              <div className="menu-title">{item.name}</div>
+              <Body02 fontWeight="semiBold" className="menu-title">
+                {item.name}
+              </Body02>
             </Link>
           </li>
         ))}
