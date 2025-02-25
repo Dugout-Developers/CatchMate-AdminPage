@@ -67,4 +67,6 @@ sketch
 # and uncomment the following lines
 # .pnp.*
 
+.env
+
 # End of https://www.toptal.com/developers/gitignore/api/react,macos,yarn

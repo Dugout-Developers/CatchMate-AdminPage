@@ -1,0 +1,19 @@
+.home {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1840px;
+  margin: 0 auto;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  flex: 1;
+  min-width: 280px;
+  max-width: 428px;
+}
