@@ -13,17 +13,27 @@ const LoginPage = () => {
       return;
     }
 
-    // ✅ 네이버 로그인 버튼만 초기화 (자동 로그인 제거)
+    // ✅ 네이버 로그인 초기화
     const naverLogin = new window.naver.LoginWithNaverId({
       clientId: NAVER_CLIENT_ID,
       callbackUrl: CALLBACK_URL,
-      isPopup: false, // ✅ 팝업 대신 새 창에서 로그인
+      isPopup: false,
     });
 
     naverLogin.init();
+
+    // ✅ 페이지가 로드될 때 자동으로 로그인 상태 확인
+    setTimeout(() => {
+      naverLogin.getLoginStatus((status) => {
+        console.log('✅ 네이버 로그인 상태:', status);
+        if (status) {
+          console.log('✅ 네이버 유저 정보:', naverLogin.user);
+          localStorage.setItem('naverUser', JSON.stringify(naverLogin.user));
+        }
+      });
+    }, 500);
   }, []);
 
-  // ✅ 로그인 버튼 클릭 시 실행되는 함수
   const handleNaverLogin = () => {
     console.log('네이버 로그인 버튼 클릭됨!');
 
@@ -34,21 +44,19 @@ const LoginPage = () => {
     });
 
     naverLogin.init();
-
-    // ✅ 로그인 버튼 클릭 시 `getLoginStatus()` 실행
     setTimeout(() => {
+      console.log('✅ 네이버 로그인 요청 시작...');
       naverLogin.getLoginStatus(async (status) => {
         console.log('✅ 네이버 로그인 상태:', status);
-
         if (status) {
           console.log('✅ 네이버 유저 정보:', naverLogin.user);
 
-          if (!naverLogin.user || !naverLogin.user.id) {
-            console.error('❌ 네이버 로그인 실패: 사용자 정보 없음');
-            return;
-          }
+          // ✅ 로그인 정보 저장
+          localStorage.setItem('naverUser', JSON.stringify(naverLogin.user));
 
           handleLogin(naverLogin.user);
+        } else {
+          console.error('❌ 네이버 로그인 상태가 false 입니다.');
         }
       });
     }, 500);
