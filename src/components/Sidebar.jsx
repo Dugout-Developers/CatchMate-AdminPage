@@ -10,7 +10,7 @@ import { Body02 } from '../styles/FontStyle/Typography';
 const Sidebar = () => {
   const location = useLocation();
   const menuItems = [
-    { name: '홈', path: '/', icon: UserIcon },
+    { name: '홈', path: '/dashboard', icon: UserIcon },
     { name: '회원관리', path: '/users', icon: UserIcon },
     { name: '게시글', path: '/posts', icon: GrowthIcon },
     { name: '신고내역', path: '/reports', icon: GrowthIcon },

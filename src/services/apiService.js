@@ -13,9 +13,18 @@ const apiClient = axios.create({
 // 요청 인터셉터 (토큰 추가)
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('accessToken'); // 토큰 가져오기
-    if (token) {
-      config.headers.AccessToken = `${token}`;
+    if (config.url.includes('/auth/logout')) {
+      // 로그아웃 요청의 경우
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (refreshToken) {
+        config.headers.RefreshToken = `${refreshToken}`;
+      }
+    } else if (!config.url.includes('/auth/login')) {
+      const token = localStorage.getItem('accessToken'); // 토큰 가져오기
+      console.log(token);
+      if (token) {
+        config.headers.AccessToken = `${token}`; // 토큰 추가
+      }
     }
     return config;
   },
@@ -33,11 +42,16 @@ apiClient.interceptors.response.use(
 
 // API 요청 함수
 export const apiService = {
+  // POST 요청
+  postLogin: (loginInfo) => apiClient.post('/auth/login', loginInfo),
   // GET 요청 (데이터 가져오기)
   getHomeDashboard: () => apiClient.get('/admin/dashboard'),
   getHomeGenderInfo: () => apiClient.get('/admin/user/gender-ratio'),
   getHomeTeamInfo: () => apiClient.get('/admin/user/team-support'),
   getHomeStyleInfo: () => apiClient.get('/admin/user/cheer-style'),
+
+  // DELETE 요청
+  deleteTokenLogout: () => apiClient.delete('/auth/logout'),
 };
 
 export default apiService;
