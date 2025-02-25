@@ -21,6 +21,7 @@ apiClient.interceptors.request.use(
       }
     } else if (!config.url.includes('/auth/login')) {
       const token = localStorage.getItem('accessToken'); // 토큰 가져오기
+      console.log(token);
       if (token) {
         config.headers.AccessToken = `${token}`; // 토큰 추가
       }
